@@ -1,0 +1,28 @@
+función longestCommonSubsequenceDP(secuencia1, secuencia2):
+    m = longitud(secuencia1)
+    n = longitud(secuencia2)
+    dp = matriz(m+1, n+1)
+
+    para i = 0 hasta m:
+        para j = 0 hasta n:
+            si i == 0 o j == 0:
+                dp[i][j] = 0
+            sino si secuencia1[i-1] == secuencia2[j-1]:
+                dp[i][j] = dp[i-1][j-1] + 1
+            sino:
+                dp[i][j] = max(dp[i-1][j], dp[i][j-1])
+
+    longitudLCS = dp[m][n]
+    LCS = []
+
+    mientras m > 0 y n > 0:
+        si secuencia1[m-1] == secuencia2[n-1]:
+            LCS.insertarAlInicio(secuencia1[m-1])
+            m = m - 1
+            n = n - 1
+        sino si dp[m-1][n] > dp[m][n-1]:
+            m = m - 1
+        sino:
+            n = n - 1
+
+    retornar LCS, longitudLCS
