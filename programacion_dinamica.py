@@ -1,4 +1,7 @@
+import time
+
 def longestCommonSubsequenceDP(seq1, seq2):
+    start_time = time.time()
     m = len(seq1)
     n = len(seq2)
     dp = [[0] * (n+1) for _ in range(m+1)]
@@ -23,15 +26,19 @@ def longestCommonSubsequenceDP(seq1, seq2):
         else:
             n -= 1
 
-    return lcs, lcs_length
+    end_time = time.time()
+    execution_time = end_time - start_time
+
+    return lcs, lcs_length, execution_time
 
 def test_longestCommonSubsequenceDP():
-    seq1 = "AGGTAB"
-    seq2 = "GXTXAYB"
-    lcs, lcs_length = longestCommonSubsequenceDP(seq1, seq2)
-    print("Secuencia 1:", seq1)
-    print("Secuencia 2:", seq2)
+    seq1 = "yyuueruhufdafudufnsdfuidsnifnsdfodsfdsfinsdiofnoidsfyyuueruhufdafudufnsdfuidsnifnsdfodsfdsfinsdiofnoidsfyyuueruhufdafudufnsdfuidsnifnsdfodsfdsfinsdiofnoidsfyyuueruhufdafudufnsdfuidsnifnsdfodsfdsfinsdiofnoidsf"
+    seq2 = "sdunaufniasfndaufnuiadnfuidafuinadfuinaudifndausdunaufniasfndaufnuiadnfuidafuinadfuinaudifndausdunaufniasfndaufnuiadnfuidafuinadfuinaudifndausdunaufniasfndaufnuiadnfuidafuinadfuinaudifndau"
+    lcs, lcs_length, execution_time = longestCommonSubsequenceDP(seq1, seq2)
+    print("Secuencia 1:", seq1, len(seq1))
+    print("Secuencia 2:", seq2, len(seq2))
     print("Subsecuencia común más larga:", lcs)
     print("Longitud de la subsecuencia común más larga:", lcs_length)
+    print("Tiempo de ejecución:", execution_time, "segundos")
 
 test_longestCommonSubsequenceDP()
