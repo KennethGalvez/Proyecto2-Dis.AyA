@@ -1,0 +1,8 @@
+función longestCommonSubsequenceGreedy(secuencia1, secuencia2):
+    LCS = []
+
+    para cada elemento en secuencia1:
+        si elemento está en secuencia2:
+            LCS.agregar(elemento)
+
+    retornar LCS, longitud(LCS)
